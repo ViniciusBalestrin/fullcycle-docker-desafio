@@ -13,6 +13,7 @@ services:
       - db
     ports: 
       - 3000:3000
+    entrypoint: wait-for db:3306 -t 30 -- node index.js
   db:
     image: mysql:8.2
     command: --innodb-use-native-aio=0
@@ -39,7 +40,6 @@ services:
       - 8080:80
     volumes:
       - ./nginx-logs:/var/log/nginx
-  
 networks:
   node-nginx:
     driver: bridge

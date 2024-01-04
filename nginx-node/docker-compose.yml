@@ -7,8 +7,8 @@ services:
     networks:
       - node-nginx
     tty: true
-    # volumes: 
-    #   - "./node/:/usr/src/app"
+    volumes: 
+      - "./node/index.js/:/usr/src/app/index.js"
     depends_on:
       - db
     ports: 
@@ -40,6 +40,8 @@ services:
       - 8080:80
     volumes:
       - ./nginx-logs:/var/log/nginx
+    depends_on:
+      - node
 networks:
   node-nginx:
     driver: bridge

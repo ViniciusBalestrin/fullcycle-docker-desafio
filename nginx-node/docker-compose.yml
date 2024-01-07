@@ -8,7 +8,8 @@ services:
       - node-nginx
     tty: true
     volumes: 
-      - "./node/index.js/:/usr/src/app/index.js"
+      - "./node/:/usr/src/app/"
+      - "/usr/src/app/node_modules"
     depends_on:
       - db
     ports: 
